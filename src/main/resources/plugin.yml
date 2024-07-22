@@ -1,0 +1,4 @@
+name: ReflectionsTest
+version: '1.0-SNAPSHOT'
+main: de.syskoh.reflectionsTest.ReflectionsTest
+api-version: '1.21'
