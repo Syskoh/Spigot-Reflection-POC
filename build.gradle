@@ -45,7 +45,17 @@ processResources {
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
-    filesMatching('paper-plugin.yml') {
+    filesMatching('plugin.yml') {
         expand props
+    }
+}
+
+
+shadowJar {
+    doLast {
+        copy {
+            from shadowJar.archiveFile
+            into 'D:\\Daten\\Minecraft\\MC-Server\\plugins'
+        }
     }
 }
