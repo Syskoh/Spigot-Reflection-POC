@@ -12,16 +12,16 @@ import org.bukkit.inventory.ItemStack;
 public class PlayerInteractListener implements Listener {
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event){
+    public void onPlayerInteract(PlayerInteractEvent event) {
         event.getPlayer().sendMessage("Hallo vom Interact Event: " + event.getAction());
 
-
-        if(event.getAction() == Action.RIGHT_CLICK_BLOCK){
-            Location loc = event.getClickedBlock().getLocation().add(0.5,1.5,0.5);
-            Material mat = event.getClickedBlock().getType();
-            ItemDisplay itemDisplay = loc.getWorld().spawn(loc, ItemDisplay.class);
-            itemDisplay.setItemStack(new ItemStack(mat));
-
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+            return;
         }
+
+        Location loc = event.getClickedBlock().getLocation().add(0.5, 1.5, 0.5);
+        Material mat = event.getClickedBlock().getType();
+        ItemDisplay itemDisplay = loc.getWorld().spawn(loc, ItemDisplay.class);
+        itemDisplay.setItemStack(new ItemStack(mat));
     }
 }
